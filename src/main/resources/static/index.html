@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Bean en Spring Boot</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        header {
+            background-color: #2b6cb0;
+            color: white;
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        main {
+            max-width: 900px;
+            margin: 2rem auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        h1, h2 {
+            color: #2b6cb0;
+        }
+
+        pre {
+            background: #f0f0f0;
+            padding: 1rem;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        code {
+            color: #d63384;
+            font-weight: bold;
+        }
+
+        ul {
+            margin-left: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>¿Qué es un @Bean en Spring Boot?</h1>
+    </header>
+
+    <main>
+        <h2>📘 Definición</h2>
+        <p>
+            En <strong>Spring Boot</strong>, la anotación <code>@Bean</code> se utiliza para indicar que el método
+            que la contiene devuelve un objeto que debe ser <strong>gestionado por el contenedor de Spring</strong>.
+        </p>
+        <p>
+            Esto significa que Spring se encarga de <em>crear</em>, <em>configurar</em> e <em>inyectar</em> 
+            ese objeto automáticamente donde se necesite.
+        </p>
+
+        <h2>🧩 Ejemplo básico</h2>
+        <pre><code>@Configuration
+public class AppConfig {
+
+    @Bean
+    public MyService myService() {
+        return new MyService();
+    }
+}</code></pre>
+
+        <p>
+            En este ejemplo, el método <code>myService()</code> devuelve una instancia de la clase 
+            <code>MyService</code>, y Spring la registra como un <strong>bean</strong> para que
+            pueda ser usada en toda la aplicación.
+        </p>
+
+        <h2>⚙️ ¿Para qué sirve?</h2>
+        <ul>
+            <li>Permite la <strong>inyección de dependencias</strong> (usar objetos sin crearlos manualmente).</li>
+            <li>Facilita la <strong>reutilización</strong> y <strong>configuración</strong> centralizada.</li>
+            <li>Ayuda a mantener el código <strong>desacoplado</strong> y más fácil de probar.</li>
+        </ul>
+
+        <h2>💡 Ejemplo de uso</h2>
+        <pre><code>@RestController
+public class HelloController {
+
+    @Autowired
+    private MyService myService;
+
+    @GetMapping("/hello")
+    public String hello() {
+        return myService.saludar();
+    }
+}</code></pre>
+
+        <p>
+            Aquí Spring inyecta automáticamente el objeto <code>MyService</code> que fue declarado con <code>@Bean</code>.
+        </p>
+
+        <h2>✅ En resumen</h2>
+        <ul>
+            <li><code>@Bean</code> → Crea y registra un objeto en el contenedor de Spring.</li>
+            <li><code>@Configuration</code> → Indica que la clase contiene definiciones de beans.</li>
+            <li><code>@Autowired</code> → Inyecta los beans automáticamente donde se necesiten.</li>
+        </ul>
+    </main>
+
+    <footer>
+        &copy; 2025 Guía rápida de @Bean — Hecho con ❤️ y Spring Boot
+    </footer>
+</body>
+</html>
