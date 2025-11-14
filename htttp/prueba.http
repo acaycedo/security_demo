@@ -1,0 +1,25 @@
+###
+GET http://localhost:8080/api/hello
+Authorization: Basic YWNheWNlZG86YWRtaW4xMjM=
+
+###
+POST http://localhost:8080/api/hello
+Authorization: Basic YWNheWNlZG86YWRtaW4xMjM=
+Content-Type: application/json
+
+{
+    "name": "Andres"
+}
+
+###
+GET http://localhost:8080/api/hello
+Authorization: Basic YWppbWVuZXo6YWRtaW4xMg==
+
+###
+POST http://localhost:8080/api/hello
+Authorization: Basic YWppbWVuZXo6YWRtaW4xMg==
+Content-Type: application/json
+
+{
+    "name": "Envio de Post no autorizado"
+}
